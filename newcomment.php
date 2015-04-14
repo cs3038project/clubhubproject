@@ -3,6 +3,9 @@
 	session_start();
 	if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 		header ("Location: login.php");
+	}
+	//get userid
+	$userid = $_SESSION['userName']
 ?>
 
 <?php
@@ -15,7 +18,7 @@
 <?php
 //create query
 	$insertComment = $connection->prepare("insert comment(commenter, ctext, is_public_c) value(?,?,?)");
-	$insertComment->bind_param("ssi", $_POST['commenter'], $_POST['ctext'], $_POST['c_is_public']);
+	$insertComment->bind_param("ssi", $userid, $_POST['ctext'], $_POST['c_is_public']);
 	if($insertComment->execute()){
 		echo " Your comment was posted</br><hr/>";
 	}
@@ -23,7 +26,6 @@
 
 
 <?php
-	echo $_POST['commenter'] . "</br>";
 	echo $_POST['ctext'] . "</br>";
 	echo $_POST['c_is_public'] . "</br>";
 ?>
