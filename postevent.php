@@ -3,6 +3,9 @@
 	session_start();
 	if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 		header ("Location: login.php");
+	}
+	//get user id
+	$userid= $_SESSION['userName']; 
 ?>
 
 <?php
@@ -16,12 +19,8 @@
 <?php
 //create query
 	$checkAdmin = $connection->prepare("SELECT cname FROM role_in natural join club WHERE pid=? and role='Admin'");
-	//$checkAdmin->bind_param("i", $_GET['pid']);
-	$checkAdmin->bind_param("s", $personID);
-	$personID="1";
-	
+	$checkAdmin->bind_param("s", $userid);
 	$checkAdmin->bind_result($cname);
-	
 ?>
 <?php
 	$checkAdmin->execute();
