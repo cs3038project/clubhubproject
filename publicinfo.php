@@ -1,8 +1,6 @@
 <?php
-session_start();
-if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
-	header ("Location: login.php");
-}
+
+
 //connect to database
 	$connection=mysqli_connect("localhost","root", "", "Clubhub");
 	$connection2=mysqli_connect("localhost","root", "", "Clubhub");
