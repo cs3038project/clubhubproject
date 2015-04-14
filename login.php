@@ -1,7 +1,3 @@
-
-
-
-
 <?php
  
 $uname = "";
@@ -91,13 +87,3 @@ Password: <INPUT TYPE = 'TEXT' Name ='password'  value="<?PHP print $pword;?>" m
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-<?php
- 
