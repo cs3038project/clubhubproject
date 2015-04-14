@@ -4,8 +4,6 @@
 	if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 		header ("Location: login.php");
 	}
-	//get user id
-	$userid= $_SESSION['userName']; 
 ?>
 
 <?php
@@ -17,7 +15,6 @@
 ?>
 
 <form action="newcomment.php" method="post">
-	Commenter: <input type="text" name="commenter" value=<?php $userid; ?> /><br><br>
 	Comment: <textarea name="ctext" rows="5" cols="40"></textarea><br><br>			
 	Is it Public:
 		<input type="radio" name="c_is_public" value="1" checked>Yes 
