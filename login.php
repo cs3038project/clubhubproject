@@ -3,7 +3,7 @@
 
 
 <?php
-
+ 
 $uname = "";
 $pword ="";
 $errorMessage = "";
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	//include "connectdb.php";
 	$dbhost = "localhost";
 	$dbuser = "root";
-	$dbpass = "";
+	$dbpass = "rasengan";
 	$dbname = "Clubhub";
 	$mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 	 // Test if connection succeeded
