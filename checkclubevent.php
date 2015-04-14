@@ -3,6 +3,8 @@
 	session_start();
 	if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 		header ("Location: login.php");
+	//get the pid
+	$personId= $_SESSION['userName']; 
 ?>
 
 <?php
@@ -16,10 +18,7 @@
 <?php
 //create query
 	$checkAdmin = $connection->prepare("SELECT clubid FROM role_in WHERE pid=? and role='Admin'");
-	//$checkAdmin->bind_param("i", $_GET['pid']);
-	$checkAdmin->bind_param("s", $personID);
-	$personID="1";
-	
+	$checkAdmin->bind_param("i", $personId);
 	$checkAdmin->execute();
 	$checkAdmin->bind_result($clubid);
 	if(!$checkAdmin){
