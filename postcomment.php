@@ -15,16 +15,9 @@
 		die("Database connection fail: ".mysqli_connect_error(). " (" .mysqli_connect_errno().")");
 	}
 ?>
-<?php
-//create query
-	$stmt = $connection->prepare("SELECT distinct cname, descr FROM club natural join club_topics WHERE topic=?");
-	$stmt->bind_param("s", $_GET['topic']);
-	$stmt->execute();
-	$stmt->bind_result($cname, $descr);
-?>
 
 <form action="newcomment.php" method="post">
-	Commenter: <input type="text" name="commenter" value="" /><br><br>
+	Commenter: <input type="text" name="commenter" value=<?php $userid; ?> /><br><br>
 	Comment: <textarea name="ctext" rows="5" cols="40"></textarea><br><br>			
 	Is it Public:
 		<input type="radio" name="c_is_public" value="1" checked>Yes 
