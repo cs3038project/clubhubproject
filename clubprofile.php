@@ -19,7 +19,7 @@ if( isset($_GET['clubname'])){
 	//include "connectdb.php";
 	$dbhost = "localhost";
 	$dbuser = "root";
-	$dbpass = "rasengan";
+	$dbpass = "";
 	$dbname = "Clubhub";
 	$mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 	 // Test if connection succeeded
