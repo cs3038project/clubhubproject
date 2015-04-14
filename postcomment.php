@@ -3,6 +3,9 @@
 	session_start();
 	if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 		header ("Location: login.php");
+	}
+	//get user id
+	$userid= $_SESSION['userName']; 
 ?>
 
 <?php
