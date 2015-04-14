@@ -1,6 +1,10 @@
 <?php
+session_start();
+if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+	header ("Location: login.php");
+}
 //connect to database
-	$connection=mysqli_connect("localhost","root", "", "clubhub");
+	$connection=mysqli_connect("localhost","root", "rasengan", "Clubhub");
 	if(mysqli_connect_errno()){
 		die("Database connection fail: ".mysqli_connect_error(). " (" .mysqli_connect_errno().")");
 	}
@@ -15,6 +19,31 @@
 <html lang="en">
 	<head>
 		<title>Display Clubs</title>
+	<link rel="stylesheet" type="text/css" href="font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="skel.css">
+<link rel="stylesheet" type="text/css" href="style-xlarge.css">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+	</head>
+	<body class="landing">
+		<div>
+			<h1>  </h1>
+		</div>
+		
+   
+	
 	</head>
 	<body>
 		<div>
@@ -30,6 +59,7 @@
 				echo "Description: " . $descr;
 				echo "<hr />";
 			?>
+			
 		<?php
 			};
 			$stmt->close();
