@@ -8,7 +8,7 @@ if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 //include "connectdb.php";
 $dbhost = "localhost";
 $dbuser = "root";
-$dbpass = "";
+$dbpass = "rasengan";
 $dbname = "Clubhub";
 $mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
  // Test if connection succeeded
@@ -179,37 +179,43 @@ if($stmt = $mysqli->prepare($query1)){
 							<p>Get involved with club events</p>
 						</header>
 						<div class="row 150%">
-							<div class="6u 12u$(xsmall)">
-								<div  href= "viewmyevents.php"class="image fit captioned">
+							
+
+							<!--<div class="6u 12u$(xsmall)">
+								<div  href= ""class="image fit captioned">
 									<img src="images/pic02.jpg" alt="" />
 									<h3>View My Events.</h3>
 								</div> 
 							</div>
-							<div href= "postevent.php" class="6u$ 12u$(xsmall)">
+							<div href= ".php" class="6u$ 12u$(xsmall)">
 								<div class="image fit captioned">
 									<img src="images/pic03.jpg" alt="" />
 									<h3>Post New Event</h3>
 								</div>
 							</div>
-							<div href= "postcomment.php" class="6u$ 12u$(xsmall)">
+							<div href= ".php" class="6u$ 12u$(xsmall)">
 								<div class="image fit captioned">
 									<img src="images/pic03.jpg" alt="" />
 									<h3>Post Comment </h3>
 								</div>
 							</div>
-							<div href= "checkclubevent.php" class="6u$ 12u$(xsmall)">
+							<div href= ".php" class="6u$ 12u$(xsmall)">
 								<div class="image fit captioned">
 									<img src="images/pic03.jpg" alt="" />
 									<h3>Check Club events</h3>
 								</div>
 							</div>
-						</div>
-						<ul class="actions">
-							<li><a href="signuppage.php" class="button special big">Sign up for an event</a></li>
-							<li><a href="logout.php" class="button big">logout</a></li>
-
+						</div> -->
 							
 						
+						<ul class="actions">
+						<li><a href="signuppage.php" class="button special big">Sign up for an event</a></li>
+						
+							<li><a href="viewmyevents.php" class="button special big">View My Events</a></li><br>
+							<br><li><a href="postevent.php" class="button special big">Post New Event</a></li></br>
+							<br><li><a href="postcomment.php" class="button special big">Post Comment</a></li>
+							<li><a href="checkclubevent.php" class="button special big">Check Club events</a></li>
+							<li><a href="logout.php" class="button big"><h3>logout</h3></a></li>
 						<!-- <li><a href="profileindex.php">search for a club profile</a>search</li>
 						<li><a href="cosponsorpage.php">Add a co-sponsor for an event</a></li> -->
 						</ul>
