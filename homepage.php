@@ -8,7 +8,7 @@ if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 //include "connectdb.php";
 $dbhost = "localhost";
 $dbuser = "root";
-$dbpass = "rasengan";
+$dbpass = "";
 $dbname = "Clubhub";
 $mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
  // Test if connection succeeded
@@ -133,9 +133,7 @@ if($stmt = $mysqli->prepare($query1)){
 									<h2>Your Clubs</h2>
 							<?php
 									while ($stmt->fetch()) { ?>
-									<ul>
-									<li><a ><?php  echo ' '.$cname.' ' .$descr  ?></a></li>
-									</ul>
+										<li><a ><?php  echo ' '.$cname  ?></a></li>
 									  <?php }
 
 									   /* free results */
@@ -148,8 +146,6 @@ if($stmt = $mysqli->prepare($query1)){
 
 										 ?>
 
-
-									<li>             </li>
 								</header>
 							</div>
 							<div class="6u$ 12u$(medium)">
