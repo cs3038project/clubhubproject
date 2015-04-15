@@ -61,14 +61,14 @@ if($stmt = $mysqli->prepare($query1)){
    $num_of_rows = $stmt->num_rows;
 
    /* Bind the result to variables */
-   $stmt->bind_result($cname, $descr);
+   $stmt->bind_result($clubname, $descr);
 
    
 
 ?>
 <html>
 <head>
-<title>Add a co-sponsor for an event</title>
+<title>User Homepage</title>
 <link rel="stylesheet" type="text/css" href="font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="stylesheet" type="text/css" href="skel.css">
@@ -88,12 +88,6 @@ if($stmt = $mysqli->prepare($query1)){
 		</noscript>
 	</head>
 
-
-
-
-
-
-
 	<body class="landing">
 		<!-- Header -->
 			<header id="header" class="alt">
@@ -103,7 +97,7 @@ if($stmt = $mysqli->prepare($query1)){
 						<li><h2>Search for a club:</h2></li>
 						<li><form action = "clubprofile.php" method = "GET"></li>
 						<table>
-					  <li><tr><td>Club:</td><td><input type= "text" id = "clubname"name = "clubname"></td></tr></li>
+					  <li><tr><td>Club:<input type= "text" id = "clubname"name = "clubname" required></td></tr></li>
 	  				<li><tr><td><input type = "submit" id = "submit" name = "submit" value = "Find Club" ></td></tr></li>
 					</table>
 						<!--<li><a href="signuppage.php">Sign up for an event</a></li>
@@ -116,7 +110,7 @@ if($stmt = $mysqli->prepare($query1)){
 
 		<!-- Banner -->
 			<section id="banner">
-					<br><br>
+					<br><br><br><br>
 				<h2>Welcome to your Clubhub homepage</h2>
 				<!--<p>Lorem ipsum dolor sit amet nullam consequat <br /> interdum vivamus donce sed libero.</p>-->
 				<ul class="actions">
@@ -133,7 +127,7 @@ if($stmt = $mysqli->prepare($query1)){
 									<h2>Your Clubs</h2>
 							<?php
 									while ($stmt->fetch()) { ?>
-										<li><a ><?php  echo ' '.$cname  ?></a></li>
+										<li><a href="clubprofile.php?clubname=<?php echo $clubname ?>"><?php  echo ' '.$clubname  ?></a></li>
 									  <?php }
 
 									   /* free results */
@@ -147,21 +141,6 @@ if($stmt = $mysqli->prepare($query1)){
 										 ?>
 
 								</header>
-							</div>
-							<div class="6u$ 12u$(medium)">
-								<h1>Your Upcoming Events</h1>
-								<?php while ($stmt->fetch()) {
-	 ?>
-									<ul>
-									<li><a ><?php  echo ' '.$ename.' ' .$description.' ' . $edatetime.' '.$location  ?></a></li>
-									</ul>
-								<?php } 
-							/* close statement */
-									   $stmt->close();
-							/* close connection */
-									$mysqli->close();
-											?>
-								
 							</div>
 						</div>
 					</div>
@@ -205,13 +184,12 @@ if($stmt = $mysqli->prepare($query1)){
 							
 						
 						<ul class="actions">
-						<li><a href="signuppage.php" class="button special big">Sign up for an event</a></li>
-						
+							<li><a href="signuppage.php" class="button special big">Sign up for an event</a></li>
 							<li><a href="viewmyevents.php" class="button special big">View My Events</a></li><br>
 							<br><li><a href="postevent.php" class="button special big">Post New Event</a></li></br>
 							<br><li><a href="postcomment.php" class="button special big">Post Comment</a></li>
-							<li><a href="checkclubevent.php" class="button special big">Check Club events</a></li>
-							<li><a href="logout.php" class="button big"><h3>logout</h3></a></li>
+							<li><a href="checkclubevent.php" class="button special big">Check Club events</a></li><br>
+							<br><li><a href="logout.php" class="button big">logout</a></li>
 						<!-- <li><a href="profileindex.php">search for a club profile</a>search</li>
 						<li><a href="cosponsorpage.php">Add a co-sponsor for an event</a></li> -->
 						</ul>
