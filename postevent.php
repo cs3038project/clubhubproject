@@ -27,7 +27,7 @@
 	if($checkAdmin->fetch()){
 		$checkAdmin->free_result();
 ?>
-		<form action="New Event Link.php" method="post">
+		<form action="newevent.php" method="post">
 			Event Name: <input type="text" name="ename" value="" required /><br><br>
 			Description: <textarea name="descr" rows="5" cols="40"></textarea><br><br>
 			Date and Time: <input type="datetime-local" name="edatetime" value="" /><br><br>
@@ -36,8 +36,7 @@
 				<input type="radio" name="e_is_public" value="1" checked>Yes 
 				<input type="radio" name="e_is_public" value="0">No <br><br>
 			Sponsor by: <input type="number" name="cname" value="" required /><br><br>
-			Club Name: <INPUT TYPE = 'TEXT' Name ='clubname'  value="<?PHP print "";?>" maxlength="20">
-			Event Name: <INPUT TYPE = 'TEXT' Name ='eventname'  value="<?PHP print "";?>" maxlength="20">
+
 			<input type="submit" name="submit" value="Post Event" />
 		</form>
 
@@ -54,3 +53,5 @@
 	mysqli_close($connection);
 	mysqli_close($connection2);
 ?>
+
+ <a href="logout.php">logout</a>  <br>
