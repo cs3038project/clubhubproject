@@ -1,10 +1,20 @@
 <?php
+//check if you are login
+	session_start();
+	if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
+		header ("Location: login.php");
+	}
+?>
+
+<?php
 //connect to database
 	$connection=mysqli_connect("localhost","root", "", "clubhub");
+	$mysqli=mysqli_connect("localhost","root", "", "clubhub");
 	if(mysqli_connect_errno()){
 		die("Database connection fail: ".mysqli_connect_error(). " (" .mysqli_connect_errno().")");
 	}
 ?>
+
 <?php
 //create query
 	$insertEvent = $connection->prepare("insert event(ename, description, edatetime, location, is_public_e, sponsored_by) value(?,?,?,?,?,?)");
@@ -12,32 +22,12 @@
 	if($insertEvent->execute()){
 		echo "Event: " . $_POST['ename'] . " was posted</br><hr/>";
 	}
-	$eventid = $_POST['eventname'];
-	$clubname = $_POST['clubname'];
-	$query1 = 'INSERT INTO sponsored_by (`clubid`, `eid`) VALUES  (?,?)';
 
-	if(!($stmt = $mysqli->prepare("INSERT INTO sponsored_by (`clubid`, `eid`) VALUES  (?,?)"))){
-	      	 echo "Prepare failed: (" . $mysqli->errno . ")" . $mysqli->error;
-		    }
-		    if(!$stmt->bind_param('ss', $clubname, $eventid)){
-			echo "Bind failed: (" . $stmt->errno . ")" . $stmt->error;
-		    }
-		    if(!$stmt->execute()){
-		     echo "Execute failed: (" . $stmt->errno .")" . $stmt->error;
-		    }
-	   
-	   /* Store the result (to get properties) */
-	   //$stmt->store_result()
-	   $stmt->free_result();
-
-	   /* close statement */
-	   $stmt->close();
 	
 ?>
 
 
 <?php
-
 	echo $_POST['ename'] . "</br>";
 	echo $_POST['descr'] . "</br>";
 	echo $_POST['edatetime'] . "</br>";
@@ -46,9 +36,12 @@
 	echo $_POST['cname'] . "</br>";
 ?>
 
-
-
+<form action="cosponsor.php">
+	<INPUT TYPE = 'submit'  value="Add Co-sponsor"><br><br>
+</form>
 
 <?php
 	mysqli_close($connection);
 ?>
+
+ <a href="logout.php">logout</a>  <br>
