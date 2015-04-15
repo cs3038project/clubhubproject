@@ -25,7 +25,6 @@ $userid= $_SESSION['userName'];
 $eventid = $_POST['eventname'];
 $clubname = $_POST['clubname'];
 $query1 = 'INSERT INTO sponsored_by (`clubid`, `eid`) VALUES  (?,?)';
-
 if(!($stmt = $mysqli->prepare("INSERT INTO sponsored_by (`clubid`, `eid`) VALUES  (?,?)"))){
       	 echo "Prepare failed: (" . $mysqli->errno . ")" . $mysqli->error;
 	    }
@@ -36,38 +35,22 @@ if(!($stmt = $mysqli->prepare("INSERT INTO sponsored_by (`clubid`, `eid`) VALUES
 	     echo "Execute failed: (" . $stmt->errno .")" . $stmt->error;
 	    }
 	    
-
-
-
-
-
-
-
    
    /* Store the result (to get properties) */
    //$stmt->store_result();
-
    /* Get the number of rows */
   // $num_of_rows = $stmt->num_rows;
-
    /* Bind the result to variables */
   // $stmt->bind_result($cname, $descr);
-
   // while ($stmt->fetch()) {
 	// echo ''.$cname.' ' .$descr.' ' .'<br>';
    //}
   //echo "You have signed up for event: " . 
    /* free results */
    $stmt->free_result();
-
    /* close statement */
    $stmt->close();
-
-
 }
-
-
-
 ?>
 <html>
 <head>
@@ -80,8 +63,8 @@ if(!($stmt = $mysqli->prepare("INSERT INTO sponsored_by (`clubid`, `eid`) VALUES
 
 <FORM NAME ="form1" METHOD ="POST" ACTION ="cosponsorpage.php">
 
-Club Name: <INPUT TYPE = 'TEXT' Name ='clubname'  value="<?PHP print "";?>" maxlength="20">
-Event Name: <INPUT TYPE = 'TEXT' Name ='eventname'  value="<?PHP print "";?>" maxlength="20">
+Club ID: <INPUT TYPE = 'TEXT' Name ='clubname'  value="<?PHP print "";?>" maxlength="20">
+Even ID: <INPUT TYPE = 'TEXT' Name ='eventname'  value="<?PHP print "";?>" maxlength="20">
 
 <P align = center>
 <INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Add club">
@@ -94,14 +77,3 @@ Event Name: <INPUT TYPE = 'TEXT' Name ='eventname'  value="<?PHP print "";?>" ma
  <a href="logout.php">logout</a>  <br>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
