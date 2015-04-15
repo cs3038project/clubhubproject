@@ -29,10 +29,11 @@
 	$showEvent->bind_param("i", $sponsorID);
 ?>
 
+<h1>Event Check </h1>
+
 <?php
 
 	while($checkAdmin->fetch()){
-		echo 'TESTING' . "</br>";
 		echo 'clubID: ' . $clubid . "</br>";
 		$sponsorID=$clubid;
 		$showEvent->execute();
@@ -51,3 +52,4 @@
 <?php
 	mysqli_close($connection);
 ?>
+ <a href="logout.php">logout</a>  <br>
