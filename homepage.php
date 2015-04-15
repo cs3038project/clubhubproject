@@ -8,7 +8,7 @@ if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 //include "connectdb.php";
 $dbhost = "localhost";
 $dbuser = "root";
-$dbpass = "";
+$dbpass = "rasengan";
 $dbname = "Clubhub";
 $mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
  // Test if connection succeeded
@@ -100,7 +100,12 @@ if($stmt = $mysqli->prepare($query1)){
 				<h1><strong><a href="index.html"></a></strong> </h1>
 				<nav id="nav">
 					<ul>
-
+						<li><h2>Search for a club:</h2></li>
+						<li><form action = "clubprofile.php" method = "GET"></li>
+						<table>
+					  <li><tr><td>Club:</td><td><input type= "text" id = "clubname"name = "clubname"></td></tr></li>
+	  				<li><tr><td><input type = "submit" id = "submit" name = "submit" value = "Find Club" ></td></tr></li>
+					</table>
 						<!--<li><a href="signuppage.php">Sign up for an event</a></li>
 						<li><a href="logout.php">logout</a></li>
 						<li><a href="profileindex.php">search for a club profile</a>search</li>
@@ -111,6 +116,7 @@ if($stmt = $mysqli->prepare($query1)){
 
 		<!-- Banner -->
 			<section id="banner">
+					<br><br>
 				<h2>Welcome to your Clubhub homepage</h2>
 				<!--<p>Lorem ipsum dolor sit amet nullam consequat <br /> interdum vivamus donce sed libero.</p>-->
 				<ul class="actions">
@@ -174,16 +180,28 @@ if($stmt = $mysqli->prepare($query1)){
 						</header>
 						<div class="row 150%">
 							<div class="6u 12u$(xsmall)">
-								<!--<div class="image fit captioned">
+								<div  href= "viewmyevents.php"class="image fit captioned">
 									<img src="images/pic02.jpg" alt="" />
-									<h3>Lorem ipsum dolor sit amet.</h3>
-								</div> -->
+									<h3>View My Events.</h3>
+								</div> 
 							</div>
-							<div class="6u$ 12u$(xsmall)">
-								<!--<div class="image fit captioned">
+							<div href= "postevent.php" class="6u$ 12u$(xsmall)">
+								<div class="image fit captioned">
 									<img src="images/pic03.jpg" alt="" />
-									<h3>Illum, maiores tempora cupid?</h3>
-								</div>-->
+									<h3>Post New Event</h3>
+								</div>
+							</div>
+							<div href= "postcomment.php" class="6u$ 12u$(xsmall)">
+								<div class="image fit captioned">
+									<img src="images/pic03.jpg" alt="" />
+									<h3>Post Comment </h3>
+								</div>
+							</div>
+							<div href= "checkclubevent.php" class="6u$ 12u$(xsmall)">
+								<div class="image fit captioned">
+									<img src="images/pic03.jpg" alt="" />
+									<h3>Check Club events</h3>
+								</div>
 							</div>
 						</div>
 						<ul class="actions">
