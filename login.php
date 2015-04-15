@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	//include "connectdb.php";
 	$dbhost = "localhost";
 	$dbuser = "root";
-	$dbpass = "rasengan";
+	$dbpass = "";
 	$dbname = "Clubhub";
 	$mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 	 // Test if connection succeeded
@@ -40,7 +40,7 @@ if(!($stmt = $mysqli->prepare("SELECT pid, passwd FROM person WHERE pid = ? and 
 				$_SESSION['userName'] = $uname;
 				
 					
-				header ("Location: fixedhomepage.php");
+				header ("Location: homepage.php");
 				exit();
 			}
 			else {
@@ -71,7 +71,7 @@ if(!($stmt = $mysqli->prepare("SELECT pid, passwd FROM person WHERE pid = ? and 
 </head>
 <body>
 
-<FORM NAME ="form1" METHOD ="POST" ACTION ="login2.php">
+<FORM NAME ="form1" METHOD ="POST" ACTION ="login.php">
 
 Username: <INPUT TYPE = 'TEXT' Name ='username'  value="<?PHP print $uname;?>" maxlength="20">
 Password: <INPUT TYPE = 'TEXT' Name ='password'  value="<?PHP print $pword;?>" maxlength="16">
