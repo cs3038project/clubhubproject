@@ -36,6 +36,8 @@
 				<input type="radio" name="e_is_public" value="1" checked>Yes 
 				<input type="radio" name="e_is_public" value="0">No <br><br>
 			Sponsor by: <input type="number" name="cname" value="" required /><br><br>
+			Club Name: <INPUT TYPE = 'TEXT' Name ='clubname'  value="<?PHP print "";?>" maxlength="20">
+			Event Name: <INPUT TYPE = 'TEXT' Name ='eventname'  value="<?PHP print "";?>" maxlength="20">
 			<input type="submit" name="submit" value="Post Event" />
 		</form>
 
