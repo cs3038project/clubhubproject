@@ -30,9 +30,8 @@
 	echo $_POST['c_is_public'] . "</br>";
 ?>
 
-
-
-
 <?php
 	mysqli_close($connection);
 ?>
+
+ <a href="logout.php">logout</a>  <br>
