@@ -12,6 +12,27 @@
 	if($insertEvent->execute()){
 		echo "Event: " . $_POST['ename'] . " was posted</br><hr/>";
 	}
+	$eventid = $_POST['eventname'];
+	$clubname = $_POST['clubname'];
+	$query1 = 'INSERT INTO sponsored_by (`clubid`, `eid`) VALUES  (?,?)';
+
+	if(!($stmt = $mysqli->prepare("INSERT INTO sponsored_by (`clubid`, `eid`) VALUES  (?,?)"))){
+	      	 echo "Prepare failed: (" . $mysqli->errno . ")" . $mysqli->error;
+		    }
+		    if(!$stmt->bind_param('ss', $clubname, $eventid)){
+			echo "Bind failed: (" . $stmt->errno . ")" . $stmt->error;
+		    }
+		    if(!$stmt->execute()){
+		     echo "Execute failed: (" . $stmt->errno .")" . $stmt->error;
+		    }
+	   
+	   /* Store the result (to get properties) */
+	   //$stmt->store_result()
+	   $stmt->free_result();
+
+	   /* close statement */
+	   $stmt->close();
+	
 ?>
 
 
