@@ -1,6 +1,4 @@
 <?php
-
-
 //connect to database
 	$connection=mysqli_connect("localhost","root", "", "Clubhub");
 	$connection2=mysqli_connect("localhost","root", "", "Clubhub");
@@ -56,10 +54,10 @@
 				<nav id="nav">
 					<ul>
 						<li><a href="login.php">login</a></li>
-						<li><h2>Search for a user below:</h2></li>
+						<li><h2>Search for a club:</h2></li>
 						<li><form action = "clubprofile.php" method = "GET"></li>
 						<table>
-					  <li><tr><td>Username:</td><td><input type= "text" id = "clubname"name = "clubname"></td></tr></li>
+					  <li><tr><td>Club:</td><td><input type= "text" id = "clubname"name = "clubname"></td></tr></li>
 	  				<li><tr><td><input type = "submit" id = "submit" name = "submit" value = "Find Club" ></td></tr></li>
 					</table>
 					</ul>
