@@ -1,8 +1,8 @@
 <?php
 
 //connect to database
-	$connection=mysqli_connect("localhost","root", "rasengan", "Clubhub");
-	$connection2=mysqli_connect("localhost","root", "rasengan", "Clubhub");
+	$connection=mysqli_connect("localhost","root", "", "Clubhub");
+	$connection2=mysqli_connect("localhost","root", "", "Clubhub");
 	if(mysqli_connect_errno()){
 		die("Database connection fail: ".mysqli_connect_error(). " (" .mysqli_connect_errno().")");
 	}
