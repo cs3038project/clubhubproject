@@ -1,4 +1,7 @@
 
+
+
+
 <?php
  
 $uname = "";
@@ -45,10 +48,10 @@ if(!($stmt = $mysqli->prepare("SELECT pid, passwd FROM person WHERE pid = ? and 
    /* Bind the result to variables */
    $stmt->bind_result($user_name, $pass_word);
    while ($stmt->fetch()) {
-	echo $user_name . "username" ;
+	echo $user_name . "username" . $pass_word;
 }
 	    if ($stmt) {
-			if ($user_name ==$uname) {
+			if ($user_name ==$uname && $pword == $pass_word) {
 				session_start();
 				$_SESSION['login'] = "1";
 				$_SESSION['userName'] = $uname;
@@ -74,20 +77,11 @@ if(!($stmt = $mysqli->prepare("SELECT pid, passwd FROM person WHERE pid = ? and 
 <link rel="stylesheet" type="text/css" href="font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="stylesheet" type="text/css" href="skel.css">
-<link rel="stylesheet" type="text/css" href="style-xlarge.css">
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-layers.min.js"></script>
-		<script src="js/init.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/skel.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-xlarge.css" />
-		</noscript>
+
+
+
+
+
 </head>
 <body>
 
@@ -105,16 +99,15 @@ Password: <INPUT TYPE = 'TEXT' Name ='password'  value="<?PHP print $pword;?>" m
 <P>
 <?PHP print $errorMessage;?>
 
-
-<section id="three" class="wrapper style1">
-					<div class="container">
-						<header class="major special">
-
-							<a href="publicinfo.php">Public Info</a></br>
-						</header>
-						
-					</div>
-				</section>
 </body>
 </html>
 
+
+
+
+
+
+
+
+<?php
+ 
