@@ -45,7 +45,7 @@ if( isset($_GET['clubname'])){
 	    );
 	  }
 	$userid= $_SESSION['userName']; 
-	$query1 = 'SELECT * FROM club where cname like  ?';
+	$query1 = 'SELECT * FROM club where cname = ?';
 
 
 	if($stmt = $mysqli->prepare($query1)){
