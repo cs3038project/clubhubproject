@@ -23,18 +23,20 @@
 	</head>
 <body>
 <?php
-session_start();
+\session_start();
 if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 	header ("Location: login.php");
 }
 if( isset($_GET['clubname'])){
     $clubname = $_GET['clubname'];
+    //$clubname2 = $_GET['clubname'];
+    //$_SESSION['clubname'] = $_GET['clubname'];
 	   
 	//1. Create a database connection
 	//include "connectdb.php";
 	$dbhost = "localhost";
 	$dbuser = "root";
-	$dbpass = "";
+	$dbpass = "rasengan";
 	$dbname = "Clubhub";
 	$mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 	 // Test if connection succeeded
@@ -45,7 +47,41 @@ if( isset($_GET['clubname'])){
 	    );
 	  }
 	$userid= $_SESSION['userName']; 
-	$query1 = 'SELECT * FROM club where cname = ?';
+
+	$query1 = 'SELECT * FROM club where cname = (?)';
+	
+
+	if($stmt = $mysqli->prepare($query1)){
+	   
+	   $stmt->bind_param('s',$clubname);
+	   /* execute query */
+	   $stmt->execute();
+
+	   /* Store the result (to get properties) */
+	   $stmt->store_result();
+
+	   /* Get the number of rows */
+	   $num_of_rows = $stmt->num_rows;
+
+	   /* Bind the result to variables */
+	   $stmt->bind_result($clubid, $club_name,$descr);
+	   if(!($num_of_rows > 0)){
+		die("That clubname could not be found!");
+		}
+                 
+        while ($stmt->fetch()) {
+			
+	       echo "<h2>" . $club_name. "'s profile</h2><br />";
+               echo "<tr><td>Clubid: </td></td>". $clubid ." </br></td></tr>"; 
+               echo  "<tr><td>Club Name: </td></td>". $clubname. "</br></td></tr>";
+	       //echo $descr;
+               echo  "<tr><td>Club Description: </td></td>" . $descr. "</br></td></tr>";
+	       
+                                                                                  }//while ($stmt->fetch())
+	//if($clubname != $dbclubname){die("THere has been a fatal error. Please try again.");}
+	}
+
+	$query1 = 'SELECT * FROM club natural join role_in where cname =  ?';
 
 
 	if($stmt = $mysqli->prepare($query1)){
@@ -61,27 +97,75 @@ if( isset($_GET['clubname'])){
 	   $num_of_rows = $stmt->num_rows;
 
 	   /* Bind the result to variables */
-	   $stmt->bind_result($clubid, $clubname,$descr);
-	   if($num_of_rows != 1){
+	   $stmt->bind_result($clubid, $clubname,$descr,$personid,$role);
+	   if(!($num_of_rows > 0)){
+		die("That clubname could not be found!");
+		}
+                 
+        while ($stmt->fetch()) {
+		;
+		 }
+	}
+
+$query1 = 'SELECT * FROM person natural join role_in where pid =  ?';
+
+
+	if($stmt = $mysqli->prepare($query1)){
+	   
+	   $stmt->bind_param('s',$personid);
+	   /* execute query */
+	   $stmt->execute();
+
+	   /* Store the result (to get properties) */
+	   $stmt->store_result();
+
+	   /* Get the number of rows */
+	   $num_of_rows = $stmt->num_rows;
+
+	   /* Bind the result to variables */
+	   $stmt->bind_result($pid, $passwd,$fname,$lname,$clubid,$role);
+	   if(!($num_of_rows > 0)){
+		die("That clubname could not be found!");
+		}
+                 
+        while ($stmt->fetch()) {
+	 
+               echo  "<tr></td>". $role. ": " . $fname . " ". $lname.  "</br></td></tr>";
+	      
+		 }
+}
+
+$query1 = 'SELECT * FROM club natural join advisor_of natural join person where clubid =  ?';
+
+
+	if($stmt = $mysqli->prepare($query1)){
+	   
+	   $stmt->bind_param('s',$clubid);
+	   /* execute query */
+	   $stmt->execute();
+
+	   /* Store the result (to get properties) */
+	   $stmt->store_result();
+
+	   /* Get the number of rows */
+	   $num_of_rows = $stmt->num_rows;
+
+	   /* Bind the result to variables */
+	   $stmt->bind_result($pid,$clubid,$cname,$descr, $passwd,$fname,$lname);
+	   if(!($num_of_rows > 0)){
 		die("That clubname could not be found!");
 		}
                  
         while ($stmt->fetch()) {
 	       //echo 'Clubid: '.$clubid.' Club Name: ' .$clubname.' ' . $descr.'<br>';
 	       //echo $clubname. "'s profile</h2><br /><table>";
-	       echo "<h2>" . $clubname. "'s profile</h2><br />";
-               echo "<tr><td>Club Id: </td></td>". $clubid ." </br></td></tr>"; 
-               echo  "<tr><td>Club Name: </td></td>". $clubname. "</br></td></tr>";
+               echo  "<tr></td>".  "Advisor: " . $fname . " ". $lname.  "</br></td></tr>";
 	       //echo $descr;
-               echo  "<tr><td>Club Description: </td></td>" . $descr. "</br></td></tr>";
-                                                                                  }//while ($stmt->fetch())
-	//if($clubname != $dbclubname){die("THere has been a fatal error. Please try again.");}
+		}
 	
-	?>
 
 
 
-<?php
 
 	}//if($stmt = $mysqli->prepare($query1))
 
