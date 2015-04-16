@@ -48,7 +48,7 @@ if(!($stmt = $mysqli->prepare("SELECT pid, passwd FROM person WHERE pid = ? and 
 
 }
 	    if ($stmt) {
-			if ($user_name ==$uname && $pword == $pass_word && $uname != "" && $pword != ") {
+			if ($user_name ==$uname && $pword == $pass_word && $uname != "" && $pword != "") {
 				session_start();
 				$_SESSION['login'] = "1";
 				$_SESSION['userName'] = $uname;
@@ -93,8 +93,8 @@ if(!($stmt = $mysqli->prepare("SELECT pid, passwd FROM person WHERE pid = ? and 
 
 <FORM NAME ="form1" METHOD ="POST" ACTION ="login.php">
 
-Username: <INPUT TYPE = 'TEXT' Name ='username'  value="<?PHP print $uname;?>" maxlength="100">
-Password: <INPUT TYPE = 'TEXT' Name ='password'  value="<?PHP print $pword;?>" maxlength="100">
+Username: <INPUT TYPE = 'TEXT' Name ='username'  value="<?PHP print $uname;?>" maxlength="100" required>
+Password: <INPUT TYPE = 'Password' Name ='password'  value="<?PHP print $pword;?>" maxlength="100" required>
 
 <P align = center>
 <INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login">
