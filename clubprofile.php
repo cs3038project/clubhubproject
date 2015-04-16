@@ -1,11 +1,25 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-   <title><?php echo $fname; ?> <?php echo $lname; ?>s Profile</title>
-   <link rel="stylesheet" type="text/css" href="font-awesome.min.css">
-   <link rel="stylesheet" type="text/css" href="style.css">
-   <link rel="stylesheet" type="text/css" href="skel.css">
-</head>
+   <title>Club Profile</title>
+<link rel="stylesheet" type="text/css" href="font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="skel.css">
+<link rel="stylesheet" type="text/css" href="style-xlarge.css">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+	</head>
 <body>
 <?php
 session_start();
@@ -20,7 +34,7 @@ if( isset($_GET['clubname'])){
 	$dbhost = "localhost";
 	$dbuser = "root";
 	$dbpass = "";
-	$dbname = "Clubhub";
+	$dbname = "";
 	$mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 	 // Test if connection succeeded
 	  if(mysqli_connect_errno()) {
@@ -30,8 +44,8 @@ if( isset($_GET['clubname'])){
 	    );
 	  }
 	$userid= $_SESSION['userName']; 
-	$query1 = 'SELECT * FROM club where cname = (?)';
-	
+	$query1 = 'SELECT * FROM club where cname like  ?';
+
 
 	if($stmt = $mysqli->prepare($query1)){
 	   
@@ -74,6 +88,6 @@ if( isset($_GET['clubname'])){
 
 	?>
 
- <a href="logout.php">logout</a>  <br>
+<a href="logout.php">logout</a>  <br>
 </body>
 </html>
