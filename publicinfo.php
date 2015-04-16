@@ -1,7 +1,8 @@
 <?php
+
 //connect to database
-	$connection=mysqli_connect("localhost","root", "", "Clubhub");
-	$connection2=mysqli_connect("localhost","root", "", "Clubhub");
+	$connection=mysqli_connect("localhost","root", "rasengan", "Clubhub");
+	$connection2=mysqli_connect("localhost","root", "rasengan", "Clubhub");
 	if(mysqli_connect_errno()){
 		die("Database connection fail: ".mysqli_connect_error(). " (" .mysqli_connect_errno().")");
 	}
@@ -54,10 +55,10 @@
 				<nav id="nav">
 					<ul>
 						<li><a href="login.php">login</a></li>
-						<li><h2>Search for a club:</h2></li>
+						<li><a href="homepage.php">Home</a></li>
 						<li><form action = "clubprofile.php" method = "GET"></li>
 						<table>
-					  <li><tr><td>Club:</td><td><input type= "text" id = "clubname"name = "clubname"></td></tr></li>
+					  <li><tr><td></td><td><input type= "text" id = "clubname"name = "clubname" placeholder="search for a club " required/></td></tr></li>
 	  				<li><tr><td><input type = "submit" id = "submit" name = "submit" value = "Find Club" ></td></tr></li>
 					</table>
 					</ul>
@@ -82,7 +83,7 @@
 								<header class="major">
 									
 									
-<h2> Upcoming Public Event(s): </h2>
+<h3> Upcoming Public Event(s): </h3>
 		<?php
 			$publicEvent->execute();
 			while($publicEvent->fetch()){
