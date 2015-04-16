@@ -23,7 +23,7 @@ $mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 $userid= $_SESSION['userName']; 
-$eventid = $_POST['eventid'];
+$eventid = $_GET['eventid'];
 $query1 = 'INSERT INTO sign_up (`pid`, `eid`) VALUES  (?,?)';
 
 if($stmt = $mysqli->prepare($query1)){
@@ -32,24 +32,13 @@ if($stmt = $mysqli->prepare($query1)){
    /* execute query */
    $stmt->execute();
 
-   /* Store the result (to get properties) */
-   //$stmt->store_result();
-
-   /* Get the number of rows */
-  // $num_of_rows = $stmt->num_rows;
-
-   /* Bind the result to variables */
-  // $stmt->bind_result($cname, $descr);
-
-  // while ($stmt->fetch()) {
-	// echo ''.$cname.' ' .$descr.' ' .'<br>';
-   //}
-  //echo "You have signed up for event: " . 
+ 
    /* free results */
    $stmt->free_result();
 
    /* close statement */
    $stmt->close();
+echo "You have signed up! ";
 }
 
 }
@@ -80,16 +69,7 @@ if($stmt = $mysqli->prepare($query1)){
 	</head>
 <body>
 
-<FORM NAME ="form1" METHOD ="POST" ACTION ="homepage.php">
 
-Event ID: <INPUT TYPE = 'TEXT' Name ='eventid'  value="<?PHP print "";?>" maxlength="20">
-
-<br>
-<P align = center>
-<INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Sign up">
-</P>
-
-</FORM>
 
 <P>
 <?PHP //print $errorMessage;?>
@@ -97,9 +77,9 @@ Event ID: <INPUT TYPE = 'TEXT' Name ='eventid'  value="<?PHP print "";?>" maxlen
 					<div class="container">
 						<header class="major special">
 
-							<a href="publicinfo.php">Public Info</a></br>
-							<a href="homepage.php">Homepage</a></br>
-							<a href="logout.php">logout</a>  <br>
+										<a href="publicinfo.php">Public Info</a></br>
+										<a href="homepage.php">Homepage</a></br>
+										<a href="logout.php">logout</a>  <br>
 						</header>
 						
 					</div>
@@ -107,4 +87,13 @@ Event ID: <INPUT TYPE = 'TEXT' Name ='eventid'  value="<?PHP print "";?>" maxlen
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
 
