@@ -1,6 +1,4 @@
-
-
-
+<!DOCTYPE HTML>
 
 <?php
  
@@ -15,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	//1. Create a database connection
 	//include "connectdb.php";
 	$dbhost = "localhost";
-	$dbuser = "";
+	$dbuser = "root";
 	$dbpass = "";
 	$dbname = "Clubhub";
 	$mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
@@ -67,11 +65,20 @@ if(!($stmt = $mysqli->prepare("SELECT pid, passwd FROM person WHERE pid = ? and 
 <link rel="stylesheet" type="text/css" href="font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="stylesheet" type="text/css" href="skel.css">
-
-
-
-
-
+<link rel="stylesheet" type="text/css" href="style-xlarge.css">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
 </head>
 <body>
 
@@ -91,13 +98,3 @@ Password: <INPUT TYPE = 'TEXT' Name ='password'  value="<?PHP print $pword;?>" m
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-<?php
- 
