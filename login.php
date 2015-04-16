@@ -1,4 +1,6 @@
-<!DOCTYPE HTML>
+
+
+
 
 <?php
  
@@ -24,31 +26,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		 " (" . mysqli_connect_errno() . ")"
 	    );
 	  }
+
+$query1 = 'SELECT * FROM person WHERE pid = (?)';
+
 if(!($stmt = $mysqli->prepare("SELECT pid, passwd FROM person WHERE pid = ? and passwd = ?"))){
-      	 echo "Prepare failed: (" . $mysqli->errno . ")" . $mysqli->error;
-	    }
-	    if(!$stmt->bind_param('ss', $uname, $pword)){
-		echo "Bind failed: (" . $stmt->errno . ")" . $stmt->error;
-	    }
-	    if(!$stmt->execute()){
-	     echo "Execute failed: (" . $stmt->errno .")" . $stmt->error;
-	    }
-	    $stmt->bind_result($user_name,$pass_word);
-	    $num_rows = $stmt->num_rows;
+ echo "Prepare failed: (" . $mysqli->errno . ")" . $mysqli->error;
+	}
+   if(!$stmt->bind_param('ss', $uname, $pword)){
+	echo "Bind failed: (" . $stmt->errno . ")" . $stmt->error;
+	}
+   /*$stmt->bind_param('ss',$uname,$pword);
+    execute query */
+   $stmt->execute();
+
+   /* Store the result (to get properties) */
+   $stmt->store_result();
+
+   /* Get the number of rows */
+   $num_of_rows = $stmt->num_rows;
+
+   /* Bind the result to variables */
+   $stmt->bind_result($user_name, $pass_word);
+   while ($stmt->fetch()) {
+	echo $user_name . "username" ;
+}
 	    if ($stmt) {
-			if ($user_name = $uname) {
+			if ($user_name ==$uname) {
 				session_start();
 				$_SESSION['login'] = "1";
 				$_SESSION['userName'] = $uname;
-				
-					
 				header ("Location: homepage.php");
 				exit();
 			}
 			else {
-				session_start();
-				$_SESSION['login'] = "";
-				//header ("Location: https://www.google.com");
+				header ("Location: www.google.com");
+				$errorMessage = "Error logging on";
 			}
 			
 		}
@@ -65,27 +77,18 @@ if(!($stmt = $mysqli->prepare("SELECT pid, passwd FROM person WHERE pid = ? and 
 <link rel="stylesheet" type="text/css" href="font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="stylesheet" type="text/css" href="skel.css">
-<link rel="stylesheet" type="text/css" href="style-xlarge.css">
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-layers.min.js"></script>
-		<script src="js/init.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/skel.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-xlarge.css" />
-		</noscript>
+
+
+
+
+
 </head>
 <body>
 
 <FORM NAME ="form1" METHOD ="POST" ACTION ="login.php">
 
-Username: <INPUT TYPE = 'TEXT' Name ='username'  value="<?PHP print $uname;?>" maxlength="20">
-Password: <INPUT TYPE = 'TEXT' Name ='password'  value="<?PHP print $pword;?>" maxlength="16">
+Username: <INPUT TYPE = 'TEXT' Name ='username'  value="<?PHP print $uname;?>" maxlength="100">
+Password: <INPUT TYPE = 'TEXT' Name ='password'  value="<?PHP print $pword;?>" maxlength="100">
 
 <P align = center>
 <INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login">
@@ -98,3 +101,13 @@ Password: <INPUT TYPE = 'TEXT' Name ='password'  value="<?PHP print $pword;?>" m
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+<?php
+ 
