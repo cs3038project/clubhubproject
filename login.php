@@ -1,3 +1,7 @@
+
+
+
+
 <?php
  
 $uname = "";
@@ -11,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	//1. Create a database connection
 	//include "connectdb.php";
 	$dbhost = "localhost";
-	$dbuser = "root";
+	$dbuser = "";
 	$dbpass = "";
 	$dbname = "Clubhub";
 	$mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
@@ -87,3 +91,13 @@ Password: <INPUT TYPE = 'TEXT' Name ='password'  value="<?PHP print $pword;?>" m
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+<?php
+ 
