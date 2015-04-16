@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	//include "connectdb.php";
 	$dbhost = "localhost";
 	$dbuser = "root";
-	$dbpass = "rasengan";
+	$dbpass = "";
 	$dbname = "Clubhub";
 	$mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 	 // Test if connection succeeded
@@ -59,7 +59,7 @@ if(!($stmt = $mysqli->prepare("SELECT pid, passwd FROM person WHERE pid = ? and 
 				exit();
 			}
 			else {
-				header ("Location: www.google.com");
+				
 				$errorMessage = "Error logging on";
 			}
 			
