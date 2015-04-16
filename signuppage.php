@@ -8,7 +8,7 @@ if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 //1. Create a database connection
 //include "connectdb.php";
 $dbhost = "localhost";
-$dbuser = "";
+$dbuser = "root";
 $dbpass = "";
 $dbname = "Clubhub";
 $mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
@@ -84,7 +84,7 @@ if($stmt = $mysqli->prepare($query1)){
 
 Event ID: <INPUT TYPE = 'TEXT' Name ='eventid'  value="<?PHP print "";?>" maxlength="20">
 
-
+<br>
 <P align = center>
 <INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Sign up">
 </P>
@@ -97,9 +97,9 @@ Event ID: <INPUT TYPE = 'TEXT' Name ='eventid'  value="<?PHP print "";?>" maxlen
 					<div class="container">
 						<header class="major special">
 
-										<a href="publicinfo.php">Public Info</a></br>
-										<a href="homepage.php">Homepage</a></br>
-										<a href="logout.php">logout</a>  <br>
+							<a href="publicinfo.php">Public Info</a></br>
+							<a href="homepage.php">Homepage</a></br>
+							<a href="logout.php">logout</a>  <br>
 						</header>
 						
 					</div>
@@ -107,13 +107,4 @@ Event ID: <INPUT TYPE = 'TEXT' Name ='eventid'  value="<?PHP print "";?>" maxlen
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
