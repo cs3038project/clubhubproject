@@ -19,6 +19,7 @@
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-xlarge.css" />
 		</noscript>
+
 	</head>
 <body>
 <?php
@@ -32,9 +33,9 @@ if( isset($_GET['clubname'])){
 	//1. Create a database connection
 	//include "connectdb.php";
 	$dbhost = "localhost";
-	$dbuser = "root";
+	$dbuser = "";
 	$dbpass = "";
-	$dbname = "";
+	$dbname = "Clubhub";
 	$mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 	 // Test if connection succeeded
 	  if(mysqli_connect_errno()) {
@@ -87,7 +88,35 @@ if( isset($_GET['clubname'])){
    }//if( isset($_GET['clubname']))
 
 	?>
+<header id="header" class="alt">
+				<h1><strong><a href="index.html"></a></strong> </h1>
+				<nav id="nav">
+					
+					<ul>
+						
+						<li><form action = "clubprofile.php" method = "GET"></li>
+						<table>
+					  <li><tr><td></td><td><input type= "text"  id = "clubname"name = "clubname" placeholder="search for a club" required /></td></tr></li>
+	  				<li><tr><td><input type = "submit" id = "submit" name = "submit" value = "Find Club" ></td></tr></li>
+					</table>
+						<!--<li><a href="signuppage.php">Sign up for an event</a></li>
+						<li><a href="logout.php">logout</a></li>
+						<li><a href="profileindex.php">search for a club profile</a>search</li>
+						<li><a href="cosponsorpage.php">Add a co-sponsor for an event</a></li> -->
+					</ul>
+				</nav>
+			</header>
+			       <section id="three" class="wrapper style1">
+					<div class="container">
+						<header class="major special">
 
-<a href="logout.php">logout</a>  <br>
+										<a href="publicinfo.php">Public Info</a></br>
+										<a href="homepage.php">Homepage</a></br>
+										<a href="logout.php">logout</a>  <br>
+						</header>
+						
+					</div>
+				</section>
+
 </body>
 </html>
