@@ -33,7 +33,7 @@ if( isset($_GET['clubname'])){
 	//1. Create a database connection
 	//include "connectdb.php";
 	$dbhost = "localhost";
-	$dbuser = "";
+	$dbuser = "root";
 	$dbpass = "";
 	$dbname = "Clubhub";
 	$mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
@@ -70,7 +70,7 @@ if( isset($_GET['clubname'])){
 	       //echo 'Clubid: '.$clubid.' Club Name: ' .$clubname.' ' . $descr.'<br>';
 	       //echo $clubname. "'s profile</h2><br /><table>";
 	       echo "<h2>" . $clubname. "'s profile</h2><br />";
-               echo "<tr><td>Clubid: </td></td>". $clubid ." </br></td></tr>"; 
+               echo "<tr><td>Club Id: </td></td>". $clubid ." </br></td></tr>"; 
                echo  "<tr><td>Club Name: </td></td>". $clubname. "</br></td></tr>";
 	       //echo $descr;
                echo  "<tr><td>Club Description: </td></td>" . $descr. "</br></td></tr>";
