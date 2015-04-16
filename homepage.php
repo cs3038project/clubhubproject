@@ -9,7 +9,7 @@ if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "";
-$dbname = "Clubhub";
+$dbname = "clubhub";
 $mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
  // Test if connection succeeded
   if(mysqli_connect_errno()) {
@@ -94,10 +94,10 @@ if($stmt = $mysqli->prepare($query1)){
 				<h1><strong><a href="index.html"></a></strong> </h1>
 				<nav id="nav">
 					<ul>
-						<li><h2>Search for a club:</h2></li>
+						<li><a href="publicinfo.php">Public Info</a></li>
 						<li><form action = "clubprofile.php" method = "GET"></li>
 						<table>
-					  <li><tr><td>Club:<input type= "text" id = "clubname"name = "clubname" required></td></tr></li>
+					  <li><tr><td></td><td><input type= "text"  id = "clubname"name = "clubname" placeholder="search for a club" required /></td></tr></li>
 	  				<li><tr><td><input type = "submit" id = "submit" name = "submit" value = "Find Club" ></td></tr></li>
 					</table>
 						<!--<li><a href="signuppage.php">Sign up for an event</a></li>
