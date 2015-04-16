@@ -23,7 +23,7 @@ $mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 $userid= $_SESSION['userName']; 
-$eventid = $_GET['eventid'];
+$eventid = $_POST['eventid'];
 $query1 = 'INSERT INTO sign_up (`pid`, `eid`) VALUES  (?,?)';
 
 if($stmt = $mysqli->prepare($query1)){
@@ -80,7 +80,16 @@ if($stmt = $mysqli->prepare($query1)){
 	</head>
 <body>
 
+<FORM NAME ="form1" METHOD ="POST" ACTION ="homepage.php">
 
+Event ID: <INPUT TYPE = 'TEXT' Name ='eventid'  value="<?PHP print "";?>" maxlength="20">
+
+
+<P align = center>
+<INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Sign up">
+</P>
+
+</FORM>
 
 <P>
 <?PHP //print $errorMessage;?>
