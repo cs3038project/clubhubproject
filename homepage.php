@@ -7,8 +7,8 @@ if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 //1. Create a database connection
 //include "connectdb.php";
 $dbhost = "localhost";
-$dbuser = "root";
-$dbpass = "rasengan";
+$dbuser = "";
+$dbpass = "";
 $dbname = "Clubhub";
 $mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
  // Test if connection succeeded
@@ -21,32 +21,9 @@ $mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 ?>
 <?php
-$userid= $_SESSION['userName']; 
-$query1 = 'SELECT ename,description,edatetime,location FROM event natural join sign_up where pid = (?)';
-$id = 5;
+$userid= $_SESSION['userName'];
 
-if($stmt = $mysqli->prepare($query1)){
-   
-   $stmt->bind_param('s',$userid);
-   /* execute query */
-   $stmt->execute();
-
-   /* Store the result (to get properties) */
-   $stmt->store_result();
-
-   /* Get the number of rows */
-   $num_of_rows = $stmt->num_rows;
-
-   /* Bind the result to variables */
-   $stmt->bind_result($ename, $description,$edatetime,$location);
-
-  
-
-        
-   
-   /* free results 
-   $stmt->free_result();*/
-   $query1 = 'SELECT cname,descr FROM club natural join member_of where pid = (?)';
+           $query1 = 'SELECT cname,descr FROM club natural join member_of where pid = (?)';
 
 if($stmt = $mysqli->prepare($query1)){
    
