@@ -58,14 +58,28 @@ if(!($stmt = $mysqli->prepare("INSERT INTO sponsored_by (`clubid`, `eid`) VALUES
 <link rel="stylesheet" type="text/css" href="font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="stylesheet" type="text/css" href="skel.css">
+<link rel="stylesheet" type="text/css" href="style-xlarge.css">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
 </head>
 <body>
 
-<FORM NAME ="form1" METHOD ="POST" ACTION ="cosponsorpage.php">
+<FORM NAME ="form1" METHOD ="POST" ACTION ="cosponsor.php">
 
 Club ID: <INPUT TYPE = 'TEXT' Name ='clubname'  value="<?PHP print "";?>" maxlength="20">
 Even ID: <INPUT TYPE = 'TEXT' Name ='eventname'  value="<?PHP print "";?>" maxlength="20">
-
+<br>
 <P align = center>
 <INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Add club">
 </P>
@@ -74,6 +88,16 @@ Even ID: <INPUT TYPE = 'TEXT' Name ='eventname'  value="<?PHP print "";?>" maxle
 
 <?PHP //print $errorMessage;?>
 
- <a href="logout.php">logout</a>  <br>
+<section id="three" class="wrapper style1">
+					<div class="container">
+						<header class="major special">
+
+							<a href="publicinfo.php">Public Info</a></br>
+							<a href="homepage.php">Homepage</a></br>
+							<a href="logout.php">logout</a>  <br>
+						</header>
+						
+					</div>
+				</section>
 </body>
 </html>
