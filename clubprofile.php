@@ -23,7 +23,7 @@
 	</head>
 <body>
 <?php
-\session_start();
+session_start();
 if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 	header ("Location: login.php");
 }
@@ -36,7 +36,7 @@ if( isset($_GET['clubname'])){
 	//include "connectdb.php";
 	$dbhost = "localhost";
 	$dbuser = "root";
-	$dbpass = "rasengan";
+	$dbpass = "";
 	$dbname = "Clubhub";
 	$mysqli = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 	 // Test if connection succeeded
