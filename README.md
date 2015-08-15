@@ -15,4 +15,5 @@
   * **Post information about their events**
   * **Establish roles within a club**
   * **Co-Sponsor events with other clubs**
+  * **See all events and the number of signups for each event (admin)**
 
