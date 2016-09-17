@@ -6,7 +6,6 @@ if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 	header ("Location: login.php");
 }
 //1. Create a database connection
-//include "connectdb.php";
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "";
@@ -31,31 +30,13 @@ if($stmt = $mysqli->prepare($query1)){
    $stmt->bind_param('ss',$userid,$eventid);
    /* execute query */
    $stmt->execute();
-
-   /* Store the result (to get properties) */
-   //$stmt->store_result();
-
-   /* Get the number of rows */
-  // $num_of_rows = $stmt->num_rows;
-
-   /* Bind the result to variables */
-  // $stmt->bind_result($cname, $descr);
-
-  // while ($stmt->fetch()) {
-	// echo ''.$cname.' ' .$descr.' ' .'<br>';
-   //}
-  //echo "You have signed up for event: " . 
    /* free results */
    $stmt->free_result();
 
    /* close statement */
    $stmt->close();
 }
-
 }
-
-
-
 ?>
 <html>
 <head>
@@ -67,7 +48,6 @@ if($stmt = $mysqli->prepare($query1)){
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 		<script src="js/jquery.min.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
@@ -88,11 +68,9 @@ Event ID: <INPUT TYPE = 'TEXT' Name ='eventid'  value="<?PHP print "";?>" maxlen
 <P align = center>
 <INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Sign up">
 </P>
-
 </FORM>
-
 <P>
-<?PHP //print $errorMessage;?>
+
 <section id="three" class="wrapper style1">
 					<div class="container">
 						<header class="major special">
@@ -107,13 +85,3 @@ Event ID: <INPUT TYPE = 'TEXT' Name ='eventid'  value="<?PHP print "";?>" maxlen
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
