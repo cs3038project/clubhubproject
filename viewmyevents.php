@@ -24,7 +24,6 @@
 	//query to get the clubid of the club the person is in.
 	$club = $connection1->prepare("(SELECT clubID FROM person natural join member_of WHERE pid=?)
 									UNION (SELECT clubID FROM person natural join advisor_of WHERE pid=?)");
-	//$club->bind_param("ss", $_GET['pid'], $_GET['pid']);
 	$club->bind_param("ss", $personId, $personId);
 	$personId = "1";
 	
@@ -36,7 +35,7 @@
 	$querySignUp.= "edatetime>= curdate()";
 	$signedUp = $connection2->prepare($querySignUp);
 	
-	//$signedUp->bind_param("s", $_GET['pid']);
+	
 	$signedUp->bind_param("s", $personId);
 	$signedUp->bind_result($ename, $edatetime, $location, $sponsored_by);
 	
@@ -47,7 +46,7 @@
 	$queryPublicEvent.= "(ename, edatetime, location, sponsored_by) NOT IN(" . $querySignUp . ")";
 	$publicEvent = $connection3->prepare($queryPublicEvent);
 	
-	//$publicEvent->bind_param("s", $_GET['pid']);
+	
 	$publicEvent->bind_param("s", $personId);
 	$publicEvent->bind_result($pEname, $pEdatetime, $pLocation, $pSponsored_by);
 	
@@ -58,7 +57,7 @@
 	$queryOtherEvent.= "(ename, edatetime, location, sponsored_by) NOT IN(" . $querySignUp . ")";
 	$otherEvent = $connection4->prepare($queryOtherEvent);
 
-	//$otherEvent->bind_param("is", $checkClubid, $_GET['pid']);
+	
 	$otherEvent->bind_param("is", $checkClubid, $personId);
 	$otherEvent->bind_result($oEname, $oEdatetime, $oLocation, $oSponsored_by);
 	
@@ -76,7 +75,7 @@
 </div>
 <?php
 	$signedUp->execute();
-	//echo "Event you have already signed up for: " . "</br><hr/></br>";
+	
 	while($signedUp->fetch()){
 		echo 'Event name: ' . $ename . "</br>";
 		echo 'Datetime: ' . $edatetime . "</br>";
@@ -93,7 +92,7 @@
 </div>
 <?php
 	$publicEvent->execute();
-	//echo "Event thats public: " . "</br><hr/></br>";
+	
 	while($publicEvent->fetch()){
 		echo 'Event name: ' . $pEname . "</br>";
 		echo 'Datetime: ' . $pEdatetime . "</br>";
