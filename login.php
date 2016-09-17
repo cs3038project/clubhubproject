@@ -8,9 +8,7 @@ $num_rows = 0;
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$uname = $_POST['username'];
 	$pword = $_POST['password'];
-	//error_reporting(E_ALL);
 	//1. Create a database connection
-	//include "connectdb.php";
 	$dbhost = "localhost";
 	$dbuser = "root";
 	$dbpass = "";
@@ -32,7 +30,6 @@ if(!($stmt = $mysqli->prepare("SELECT pid, passwd FROM person WHERE pid = ? and 
    if(!$stmt->bind_param('ss', $uname, $pword)){
 	echo "Bind failed: (" . $stmt->errno . ")" . $stmt->error;
 	}
-   /*$stmt->bind_param('ss',$uname,$pword);
     execute query */
    $stmt->execute();
 
@@ -78,7 +75,6 @@ if(!($stmt = $mysqli->prepare("SELECT pid, passwd FROM person WHERE pid = ? and 
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 		<script src="js/jquery.min.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
@@ -104,7 +100,6 @@ Password: <INPUT TYPE = 'Password' Name ='password'  value="<?PHP print $pword;?
 
 <P>
 <?PHP print $errorMessage;?>
-
 
 <section id="three" class="wrapper style1">
 					<div class="container">
