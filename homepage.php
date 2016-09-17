@@ -5,7 +5,6 @@ if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 	header ("Location: login.php");
 }
 //1. Create a database connection
-//include "connectdb.php";
 $dbhost = "localhost";
 $dbuser = "";
 $dbpass = "";
@@ -53,7 +52,7 @@ if($stmt = $mysqli->prepare($query1)){
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		
 		<script src="js/jquery.min.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
@@ -77,10 +76,7 @@ if($stmt = $mysqli->prepare($query1)){
 					  <li><tr><td></td><td><input type= "text"  id = "clubname"name = "clubname" placeholder="search for a club" required /></td></tr></li>
 	  				<li><tr><td><input type = "submit" id = "submit" name = "submit" value = "Find Club" ></td></tr></li>
 					</table>
-						<!--<li><a href="signuppage.php">Sign up for an event</a></li>
-						<li><a href="logout.php">logout</a></li>
-						<li><a href="profileindex.php">search for a club profile</a>search</li>
-						<li><a href="cosponsorpage.php">Add a co-sponsor for an event</a></li> -->
+						
 					</ul>
 				</nav>
 			</header>
@@ -89,9 +85,7 @@ if($stmt = $mysqli->prepare($query1)){
 			<section id="banner">
 					<br><br><br><br>
 				<h2>Welcome to your Clubhub homepage</h2>
-				<!--<p>Lorem ipsum dolor sit amet nullam consequat <br /> interdum vivamus donce sed libero.</p>-->
 				<ul class="actions">
-					<!--<li><a href="#" class="button special big">Get Started</a></li> -->
 				</ul>
 			</section>
 
@@ -109,8 +103,7 @@ if($stmt = $mysqli->prepare($query1)){
 
 									   /* free results */
 									   $stmt->free_result();
-
-									   
+									  
 									}
 									}
 
@@ -131,35 +124,6 @@ if($stmt = $mysqli->prepare($query1)){
 							<p>Get involved with club events</p>
 						</header>
 						<div class="row 150%">
-							
-
-							<!--<div class="6u 12u$(xsmall)">
-								<div  href= ""class="image fit captioned">
-									<img src="images/pic02.jpg" alt="" />
-									<h3>View My Events.</h3>
-								</div> 
-							</div>
-							<div href= ".php" class="6u$ 12u$(xsmall)">
-								<div class="image fit captioned">
-									<img src="images/pic03.jpg" alt="" />
-									<h3>Post New Event</h3>
-								</div>
-							</div>
-							<div href= ".php" class="6u$ 12u$(xsmall)">
-								<div class="image fit captioned">
-									<img src="images/pic03.jpg" alt="" />
-									<h3>Post Comment </h3>
-								</div>
-							</div>
-							<div href= ".php" class="6u$ 12u$(xsmall)">
-								<div class="image fit captioned">
-									<img src="images/pic03.jpg" alt="" />
-									<h3>Check Club events</h3>
-								</div>
-							</div>
-						</div> -->
-							
-						
 						<ul class="actions">
 							<li><a href="signuppage.php" class="button special big">Sign up for an event</a></li>
 							<li><a href="viewmyevents.php" class="button special big">View My Events</a></li><br>
@@ -167,73 +131,6 @@ if($stmt = $mysqli->prepare($query1)){
 							<br><li><a href="postcomment.php" class="button special big">Post Comment</a></li>
 							<li><a href="checkclubevent.php" class="button special big">Check Club events</a></li><br>
 							<br><li><a href="logout.php" class="button big">logout</a></li>
-						<!-- <li><a href="profileindex.php">search for a club profile</a>search</li>
-						<li><a href="cosponsorpage.php">Add a co-sponsor for an event</a></li> -->
-						</ul>
-					</div>
-				</section>
-
-			<!-- Three 
-				<section id="three" class="wrapper style1">
-					<div class="container">
-						<header class="major special">
-							<h2>Mauris vulputate dolor</h2>
-							<p>Feugiat sed lorem ipsum magna</p>
-						</header>
-						<div class="feature-grid">
-							<div class="feature">
-								<div class="image rounded"><img src="images/pic04.jpg" alt="" /></div>
-								<div class="content">
-									<header>
-										<h4>Lorem ipsum</h4>
-										<p>Lorem ipsum dolor sit</p>
-									</header>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore esse tenetur accusantium porro omnis, unde mollitia totam sit nesciunt consectetur.</p>
-								</div>
-							</div>
-							<div class="feature">
-								<div class="image rounded"><img src="images/pic05.jpg" alt="" /></div>
-								<div class="content">
-									<header>
-										<h4>Recusandae nemo</h4>
-										<p>Ratione maiores a, commodi</p>
-									</header>
-									<p>Animi mollitia optio culpa expedita. Dolorem alias minima culpa repellat. Dolores, fuga maiores ut obcaecati blanditiis, at aperiam doloremque.</p>
-								</div>
-							</div>
-							<div class="feature">
-								<div class="image rounded"><img src="images/pic06.jpg" alt="" /></div>
-								<div class="content">
-									<header>
-										<h4>Laudantium fugit</h4>
-										<p>Possimus ex reprehenderit eaque</p>
-									</header>
-									<p>Maiores iusto inventore.</p>
-								</div>
-							</div>
-							<div class="feature">
-								<div class="image rounded"><img src="images/pic07.jpg" alt="" /></div>
-								<div class="content">
-									<header>
-										<h4>Porro aliquam</h4>
-										<p>Quaerat, excepturi eveniet laboriosam</p>
-									</header>
-									<p>Vitae earum unde, .</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-
-			<!-- Four 
-				<section id="four" class="wrapper style3 special">
-					<div class="container">
-						<header class="major">
-							<h2>Aenean elementum ligula</h2>
-							<p>Feugiat sed lorem ipsum magna</p>
-						</header>
-						<ul class="actions">
-							<li><a href="#" class="button special big">Get in touch</a></li>
 						</ul>
 					</div>
 				</section>
@@ -245,18 +142,11 @@ if($stmt = $mysqli->prepare($query1)){
 						
 					</ul>
 					<ul class="copyright">
-						<!--<a href="logout.php">logout</a>-->
-					
 					</ul>
 				</div>
 			</footer>
 </head>
 <body>
-
-
-
-
-<?PHP //print $errorMessage;?>
 
    <br>
 </body>
