@@ -9,7 +9,6 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 		<script src="js/jquery.min.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
@@ -29,11 +28,7 @@ if (!(isset($_SESSION['login']) && $_SESSION['login'] != '')) {
 }
 if( isset($_GET['clubname'])){
     $clubname = $_GET['clubname'];
-    //$clubname2 = $_GET['clubname'];
-    //$_SESSION['clubname'] = $_GET['clubname'];
-	   
 	//1. Create a database connection
-	//include "connectdb.php";
 	$dbhost = "localhost";
 	$dbuser = "root";
 	$dbpass = "";
@@ -47,22 +42,15 @@ if( isset($_GET['clubname'])){
 	    );
 	  }
 	$userid= $_SESSION['userName']; 
-
 	$query1 = 'SELECT * FROM club where cname = (?)';
-	
-
 	if($stmt = $mysqli->prepare($query1)){
-	   
 	   $stmt->bind_param('s',$clubname);
 	   /* execute query */
 	   $stmt->execute();
-
 	   /* Store the result (to get properties) */
 	   $stmt->store_result();
-
 	   /* Get the number of rows */
 	   $num_of_rows = $stmt->num_rows;
-
 	   /* Bind the result to variables */
 	   $stmt->bind_result($clubid, $club_name,$descr);
 	   if(!($num_of_rows > 0)){
@@ -70,46 +58,33 @@ if( isset($_GET['clubname'])){
 		}
                  
         while ($stmt->fetch()) {
-			
 	       echo "<h2>" . $club_name. "'s profile</h2><br />";
                echo "<tr><td>Clubid: </td></td>". $clubid ." </br></td></tr>"; 
                echo  "<tr><td>Club Name: </td></td>". $clubname. "</br></td></tr>";
-	       //echo $descr;
                echo  "<tr><td>Club Description: </td></td>" . $descr. "</br></td></tr>";
-	       
-                                                                                  }//while ($stmt->fetch())
-	//if($clubname != $dbclubname){die("THere has been a fatal error. Please try again.");}
+                                                                                  }
 	}
 
 	$query1 = 'SELECT * FROM club natural join role_in where cname =  ?';
-
-
 	if($stmt = $mysqli->prepare($query1)){
-	   
 	   $stmt->bind_param('s',$clubname);
 	   /* execute query */
 	   $stmt->execute();
-
 	   /* Store the result (to get properties) */
 	   $stmt->store_result();
-
 	   /* Get the number of rows */
 	   $num_of_rows = $stmt->num_rows;
-
 	   /* Bind the result to variables */
 	   $stmt->bind_result($clubid, $clubname,$descr,$personid,$role);
 	   if(!($num_of_rows > 0)){
 		die("That clubname could not be found!");
 		}
-                 
         while ($stmt->fetch()) {
 		;
 		 }
 	}
 
 $query1 = 'SELECT * FROM person natural join role_in where pid =  ?';
-
-
 	if($stmt = $mysqli->prepare($query1)){
 	   
 	   $stmt->bind_param('s',$personid);
@@ -129,15 +104,11 @@ $query1 = 'SELECT * FROM person natural join role_in where pid =  ?';
 		}
                  
         while ($stmt->fetch()) {
-	 
                echo  "<tr></td>". $role. ": " . $fname . " ". $lname.  "</br></td></tr>";
-	      
 		 }
 }
 
 $query1 = 'SELECT * FROM club natural join advisor_of natural join person where clubid =  ?';
-
-
 	if($stmt = $mysqli->prepare($query1)){
 	   
 	   $stmt->bind_param('s',$clubid);
@@ -157,19 +128,11 @@ $query1 = 'SELECT * FROM club natural join advisor_of natural join person where 
 		}
                  
         while ($stmt->fetch()) {
-	       //echo 'Clubid: '.$clubid.' Club Name: ' .$clubname.' ' . $descr.'<br>';
-	       //echo $clubname. "'s profile</h2><br /><table>";
                echo  "<tr></td>".  "Advisor: " . $fname . " ". $lname.  "</br></td></tr>";
-	       //echo $descr;
 		}
-	
+	}
 
-
-
-
-	}//if($stmt = $mysqli->prepare($query1))
-
-   }//if( isset($_GET['clubname']))
+   }
 
 	?>
 <header id="header" class="alt">
@@ -183,10 +146,6 @@ $query1 = 'SELECT * FROM club natural join advisor_of natural join person where 
 					  <li><tr><td></td><td><input type= "text"  id = "clubname"name = "clubname" placeholder="search for a club" required /></td></tr></li>
 	  				<li><tr><td><input type = "submit" id = "submit" name = "submit" value = "Find Club" ></td></tr></li>
 					</table>
-						<!--<li><a href="signuppage.php">Sign up for an event</a></li>
-						<li><a href="logout.php">logout</a></li>
-						<li><a href="profileindex.php">search for a club profile</a>search</li>
-						<li><a href="cosponsorpage.php">Add a co-sponsor for an event</a></li> -->
 					</ul>
 				</nav>
 			</header>
