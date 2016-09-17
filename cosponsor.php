@@ -5,7 +5,6 @@
 		header ("Location: login.php");
 	}
 	//1. Create a database connection
-	//include "connectdb.php";
 	$dbhost = "localhost";
 	$dbuser = "root";
 	$dbpass = "";
@@ -32,7 +31,6 @@ if(!($stmt = $mysqli->prepare("SELECT clubid FROM club WHERE clubid = ?"))){
    if(!$stmt->bind_param('s', $clubname)){
 	echo "Bind failed: (" . $stmt->errno . ")" . $stmt->error;
 	}
-   /*$stmt->bind_param('ss',$uname,$pword);
     execute query */
    $stmt->execute();
 
@@ -100,22 +98,7 @@ if(!($stmt = $mysqli->prepare("SELECT eid FROM event WHERE eid = ?"))){
 
 }
 	
-		    
-
-
-
-
-
-
-
-	   
-	  
-	   
-
-	//if ($_SERVER['REQUEST_METHOD'] == 'POST')
-
-
-
+		   
 	?>
 	<html>
 	<head>
@@ -137,7 +120,7 @@ if(!($stmt = $mysqli->prepare("SELECT eid FROM event WHERE eid = ?"))){
 
 
 
-	<?PHP //print $errorMessage;?>
+
 
 	 <a href="logout.php">logout</a>  <br>
 	</body>
